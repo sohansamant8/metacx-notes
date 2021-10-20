@@ -1,0 +1,63 @@
+{
+    "type": "kafka",
+    "dataSchema": {
+      "dataSource": "imply-test1",
+      "timestampSpec": {
+        "column": "time",
+        "format": "iso"
+      },
+      "dimensionsSpec": {
+        "dimensions": [
+          "eventId",
+          "signalId",
+          "rowId",
+          "companyId",
+          {
+            "name": "num3",
+            "fieldName": "num3",
+            "type": "double"
+          },
+          {
+            "name": "num4",
+            "fieldName": "num4",
+            "type": "double"
+          }
+        ]
+      },
+      "metricsSpec": [
+        {
+          "name": "count",
+          "type": "count"
+        },
+        {
+          "name": "arrValue",
+          "fieldName": "arrValue",
+          "type": "longSum"
+        }
+      ],
+      "granularitySpec": {
+        "type": "uniform",
+        "segmentGranularity": "DAY",
+        "queryGranularity": "NONE",
+        "rollup" : false
+      }
+    },
+    "ioConfig": {
+      "topic": "imply-test1",
+      "useEarliestOffset": "true",
+      "inputFormat": {
+        "type": "json"
+      },
+      "consumerProperties": {
+        "bootstrap.servers": "kafka.kafka.svc.cluster.local:9092"
+      },
+      "taskCount": 1,
+      "replicas": 1,
+      "taskDuration": "PT15M"
+    },
+    "tuningConfig": {
+      "type": "kafka",
+      "maxRowsPerSegment": 5000000
+    }
+  }
+  

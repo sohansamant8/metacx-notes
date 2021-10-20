@@ -1,0 +1,69 @@
+{
+    "type": "index_parallel",
+    "spec": {
+      "dataSchema": {
+        "dataSource": "imply-test1",
+        "timestampSpec": {
+          "column": "__time",
+          "format": "millis"
+        },
+        "dimensionsSpec": {
+          "dimensions": [
+            "eventId",
+            "signalId",
+            "rowId",
+            "companyId",
+            {
+              "name": "num3",
+              "fieldName": "num3",
+              "type": "double"
+            },
+            {
+              "name": "num4",
+              "fieldName": "num4",
+              "type": "double"
+            }
+          ]
+        },
+        "metricsSpec": [
+            {
+              "name": "count",
+              "type": "count"
+            },
+            {
+              "name": "arrValue",
+              "fieldName": "arrValue",
+              "type": "longSum"
+            }
+        ],
+        "granularitySpec": {
+          "type": "uniform",
+          "queryGranularity": "NONE",
+          "segmentGranularity": "DAY",
+          "rollup": false,
+          "intervals": [
+            "2021-10-01/2021-10-02"
+          ]
+        }
+      },
+      "ioConfig": {
+        "type": "index_parallel",
+        "inputSource": {
+          "type": "druid",
+          "dataSource": "imply-test1",
+          "interval": "2021-10-01/2021-10-02"
+        }
+      },
+      "tuningConfig": {
+        "type": "index_parallel",
+        "partitionsSpec": {
+          "type": "single_dim",
+          "partitionDimension": "signalId",
+          "targetRowsPerSegment": "500000"
+        },
+        "forceGuaranteedRollup": true,
+        "maxNumConcurrentSubTasks": 1
+      }
+    }
+  }
+  
