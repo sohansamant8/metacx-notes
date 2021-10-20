@@ -5,14 +5,17 @@
 ## Kafka Details 
 * Kafka can be accessed by consumers via port 9092 on the following DNS name from within your cluster:
 
-    `kafka.kafka.svc.cluster.local`
+    ```yaml
+    kafka.kafka.svc.cluster.local
+    ```
 
 * Each Kafka broker can be accessed by producers via port 9092 on the following DNS name(s) from within your cluster. Below brokers are for integration environment. In Dev environment, we have Kafka-0 and Kafka-1 only.
 
     ```yaml
     kafka-0.kafka-headless.kafka.svc.cluster.local:9092
     kafka-1.kafka-headless.kafka.svc.cluster.local:9092
-    kafka-2.kafka-headless.kafka.svc.cluster.local:9092```
+    kafka-2.kafka-headless.kafka.svc.cluster.local:9092
+    ```
 
 ### imply manager port forward
 * `kubectl --namespace imply port-forward svc/implydev-manager-int 9097`
@@ -27,7 +30,7 @@
 * `curl -X POST -H 'Content-Type: application/json' -d @{{PATH_TO_INGESTION_SPECS}} http://localhost:8888/druid/indexer/v1/supervisor`
 
 * Example Command given below: 
-* `curl -X POST -H 'Content-Type: application/json' -d @/Users/sohan/Desktop/MetaCX/Imply/imply-poc/Deployment/Integration/Ingestion/signalPocIngestionSpec.json http://localhost:8888/druid/indexer/v1/supervisor`
+`curl -X POST -H 'Content-Type: application/json' -d @/Users/sohan/Desktop/MetaCX/Imply/imply-poc/Deployment/Integration/Ingestion/signalPocIngestionSpec.json http://localhost:8888/druid/indexer/v1/supervisor`
 
 ### Verify if ingestion pipeline is created or not.
 * Open Browser: (http://localhost:8888)
@@ -47,15 +50,15 @@
 
 ### Start all the application services. Through terminal navigate to Jupiter code location and execute the following steps:
 * Run bootstap.
-    `npm run bootstrap`
+`npm run bootstrap`
 * Start the Databases.
-    `npm run db:start`
+`npm run db:start`
 * Launch API services and cloud function emulators (wait for this to settle).
-    `npm run dev:api` 
+`npm run dev:api` 
 * Initialize database. Open another terminal window and this uses API. Note down the user ids and passwords that you get as the seeding completes.
-    `npm run db:seed`
+`npm run db:seed`
 * Launch the application. This should open a new browser window.
-    `npm run dev:web`
+`npm run dev:web`
 
 ### Login to MetaCX application which is opened through `dev:web`
 
@@ -64,8 +67,8 @@
 * On the left top, click on Connections.
 * On the right bottom, create new connection using `add connection`. 
 * Give connection name.
-    * Select Generate Tracking Script on save because we dont want to go through authentication while sending the signal.
-    * Hit save and proceed. 
+    * Select `Generate Tracking Script` on save because we dont want to go through authentication while sending the signal.
+    * save and proceed. 
 * Refresh the page to see the connection created and then click on that connection.
 * Once connection pop-up opens up, click on `show tracking script`
 * Note down and save the `Analytics Key` as that is the connectionId which will be used to send in the events.
@@ -76,13 +79,13 @@
 
 ### Sample Event which is used above.
     ```yaml
-    {
-        "eventDate": 1634321717375,
-        "companyId": "metacx",
-        "LoginCount": 12,
-        "myStringField1": "salesforce",
-        "myStringField2": "accountLogins"
-    }
+        {
+            "eventDate": 1634321717375,
+            "companyId": "metacx",
+            "LoginCount": 12,
+            "myStringField1": "salesforce",
+            "myStringField2": "accountLogins"
+        }
     ```
 
 ### Check the Druid datasource to verify if the data is ingested.
