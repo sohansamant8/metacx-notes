@@ -26,7 +26,7 @@
 
 #### Loading data from Producer
 
-```
+```yaml
  {"time":"2021-10-01T01:02:33Z","eventId":"1","signalId":"s1","rowId":"r1","companyId":"salesforce2","arrValue":10}
  {"time":"2021-10-02T01:02:33Z","eventId":"1","signalId":"s1","rowId":"r1","companyId":"salesforce","arrValue":20}
  {"time":"2021-10-01T01:02:33Z","eventId":"2","signalId":"s2","rowId":"r2","companyId":"serviceNow","arrValue":10}
