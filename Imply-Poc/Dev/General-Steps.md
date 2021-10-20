@@ -1,3 +1,4 @@
+
 ## Important Links and commands and steps for connecting to Dev GKE and Imply and sending test data to Kafka and druid
 
 ### Connect to GKE Dev cluster
@@ -10,10 +11,10 @@
 * command: `kubectl --namespace imply port-forward svc/implydev-query 8888 9095`
 
 ### imply overload port forward
-* command: `curl http://localhost:60371/druid/indexer/v1/supervisor`
+* command: `curl http://localhost:8888/druid/indexer/v1/supervisor`
 
 ### Submitting a Supervisor Spec
-* command: `curl -X POST -H 'Content-Type: application/json' -d @PATH_TO_INGESTION_SPECS http://localhost:60371/druid/indexer/v1/supervisor`
+* command: `curl -X POST -H 'Content-Type: application/json' -d @PATH_TO_INGESTION_SPECS http://localhost:8888/druid/indexer/v1/supervisor`
 
 ### Insert data from Kafka
 
@@ -25,7 +26,9 @@
 
 #### Loading data from Producer
 
-`{"time":"2021-10-01T01:02:33Z","eventId":"1","signalId":"s1","rowId":"r1","companyId":"salesforce2","arrValue":10}`
-`{"time":"2021-10-02T01:02:33Z","eventId":"1","signalId":"s1","rowId":"r1","companyId":"salesforce","arrValue":20}`
-`{"time":"2021-10-01T01:02:33Z","eventId":"2","signalId":"s2","rowId":"r2","companyId":"serviceNow","arrValue":10}`
-`{"time":"2021-10-01T01:02:33Z","eventId":"3","signalId":"s3","rowId":"r3","companyId":"BestBuy","arrValue":10}`
+```
+ {"time":"2021-10-01T01:02:33Z","eventId":"1","signalId":"s1","rowId":"r1","companyId":"salesforce2","arrValue":10}
+ {"time":"2021-10-02T01:02:33Z","eventId":"1","signalId":"s1","rowId":"r1","companyId":"salesforce","arrValue":20}
+ {"time":"2021-10-01T01:02:33Z","eventId":"2","signalId":"s2","rowId":"r2","companyId":"serviceNow","arrValue":10}
+ {"time":"2021-10-01T01:02:33Z","eventId":"3","signalId":"s3","rowId":"r3","companyId":"BestBuy","arrValue":10}
+ ```
