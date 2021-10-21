@@ -78,15 +78,15 @@
 `curl -d '{"eventKey": "Login-report","connectionId": "c659ca6072b67978c9e6d616","data": [{"eventDate": 1634321717375,"companyId": "metacx","LoginCount": 12,"myStringField1": "salesforce","myStringField2": "accountLogins"}]}' -H "Content-Type: application/json" -X POST 'http://localhost:4007/analytics'`
 
 ### Sample Event which is used above.
-    ```yaml
-        {
-            "eventDate": 1634321717375,
-            "companyId": "metacx",
-            "LoginCount": 12,
-            "myStringField1": "salesforce",
-            "myStringField2": "accountLogins"
-        }
-    ```
+```yaml
+{
+    "eventDate": 1634321717375,
+    "companyId": "metacx",
+    "LoginCount": 12,
+    "myStringField1": "salesforce",
+    "myStringField2": "accountLogins"
+}
+```
 
 ### Check the Druid datasource to verify if the data is ingested.
 * Open Browser: (http://localhost:8888)
