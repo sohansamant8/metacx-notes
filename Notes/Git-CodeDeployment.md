@@ -65,38 +65,4 @@
 
 
 
------------------------------------------------
-
-Steps for Building into dev environment
-
-- git tag-jupiter
-
-- Run: npm run tag
-
-- Select envoronment: dev
-
-- Select services: Juno
-
-- Run the build command 
-
-    Command: build current commit id 
-
-Go to cloud build and see the build running or not. 
-
-4. Deployement Steps 
-
-    - git tag-jupiter
-
-    - Run: npm run tag
-
-    - Select envoronment : dev
-
-    - Select Service: Juno 
-
-    - Deploy the current commit 
-        Command: deploy current commit id
-
-==============================================
-
-
 

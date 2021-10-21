@@ -9,7 +9,7 @@
 * Select envoronment:
 `dev`
 
-* Operation: Build current commit id (NOT build-then-deploy)
+* Operation: `Build current commit id` (NOT build-then-deploy)
 
 * Service selection. 
     * When you get to the list of services, press the "a" key twice to first highlight all, then deselect all. 
@@ -30,7 +30,7 @@
 * Select envoronment:
 `dev`
 
-Operation: Deploy current commit id 
+* Operation: `Deploy current commit id`
 
 * Service selection. 
     * When you get to the list of services, press the "a" key twice to first highlight all, then deselect all. 
