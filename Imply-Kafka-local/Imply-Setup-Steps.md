@@ -37,9 +37,11 @@
 * Helm is a package manager for Kubernetes. Imply's Kubernetes implementation uses a Helm chart to handle setup and administration functions for the Imply cluster.
 * If you already have Helm installed, ensure that it is v3 or later, and skip to the next step. Otherwise:
     * Install Helm with the following command:
+        
         `brew install helm`
 
     * Add the Imply repository to Helm by running: 
+        
         `helm repo add imply https://static.imply.io/onprem/helm`
         `helm repo update`
 
@@ -54,6 +56,7 @@
 
 ### Step 4: Install Imply
 * Deploy the Imply chart to install Imply:
+    
     `helm install imply imply/imply`
 
 * The chart will take a few minutes to deploy, after which you will be presented with information on how to access your cluster.
@@ -105,7 +108,7 @@ Then connect to:
     * A cluster is created for you by default. Start the cluster in Imply Manager by clicking Manage then Start.
     * Once the cluster is running, access the Druid and Pivot UIs from your web browser at the following addresses:
 
-    * Druid console: (http://localhost:8888
+    * Druid console: (http://localhost:8888)
     * Pivot: http://localhost:9095
     
     * You will not be able to access Pivot or the Druid console until the cluster is running.
@@ -113,6 +116,7 @@ Then connect to:
 ### Step 6: Stop, restart, or remove Imply on Minikube
 
 * To terminate your Imply processes, stop your Minikube node by running the command:
+    
     `minikube stop`
 
 * When you stop Minikube, your user data is kept intact. To restart the cluster, call minikube start as shown below.
