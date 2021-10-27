@@ -4,11 +4,11 @@
 ### Get status of Git
 * `git status`
 
-### Create New Branch for your code deployment. Get Jira ticket number and add hypens with small description and all lowercase. 
-* `git checkout -b {{Name of Branch}}`
+### Create New Branch for your code deployment. Get Jira ticket number and add hypens with small description and all lowercase. For new task, this should be out of stable.
+* `git checkout -b {{Name of Branch}}` origin/stable
 
 * Example: Get Jira ticket number and add hypens with small description and all lowercase.
-`git checkout -b pt-34-signal-field-stats`
+`git checkout -b pt-34-signal-field-stats origin/stable`
 
 ### Make code changes to your code
 

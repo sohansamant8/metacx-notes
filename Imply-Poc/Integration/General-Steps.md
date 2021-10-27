@@ -16,7 +16,7 @@
 * `curl -X POST -H 'Content-Type: application/json' -d @{{PATH_TO_INGESTION_SPECS}} http://localhost:8888/druid/indexer/v1/supervisor`
 
 * Example: 
-`curl -X POST -H 'Content-Type: application/json' -d @/Users/sohan/Desktop/MetaCX/Imply/imply-poc/Deployment/Integration/Ingestion/signalPocIngestionSpec.json http://localhost:8888/druid/indexer/v1/supervisor`
+`curl -X POST -H 'Content-Type: application/json' -d @/Users/sohan/Desktop/MetaCX/Imply/imply-poc/Deployment/Integration/Ingestion/imply_first_kafkaIngestionSpec.json http://localhost:8888/druid/indexer/v1/supervisor`
 
 ### Insert data to Kafka
 
@@ -59,3 +59,4 @@
 
 * Example: 
 `curl -X POST -H'Content-Type: application/json' http://localhost:8888/druid/v2/sql/ -d @/Users/sohan/Desktop/MetaCX/Imply/Deployment/Dev/ingestion/query.json`
+

@@ -32,6 +32,17 @@
 
 * Call `minikube profile list` to view your clusters.
 
+## Check if `kubectl` context is pointing to `minikube`. If not, then set the `kubectl` context to `minikube`. This is will prevent the accidental execution of any commands on any of GKE cluster.
+
+* To check the current context 
+
+`kubectl config view | grep current-context`
+
+* To change the context to use minikube 
+
+`kubectl config use-context minikube`
+
+## Once the context is set to `minikube`, then only proceed with the below steps.
 
 ### Step 2: Install and configure Helm
 * Helm is a package manager for Kubernetes. Imply's Kubernetes implementation uses a Helm chart to handle setup and administration functions for the Imply cluster.

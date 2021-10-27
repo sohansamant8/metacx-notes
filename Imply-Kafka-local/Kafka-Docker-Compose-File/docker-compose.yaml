@@ -1,0 +1,59 @@
+# The docker-compose file will run following steps:
+# Build an imply-local image using dockerFile
+# Create Imply, Kafka and Zookeeper containers. 
+
+version: "3"
+
+services:
+  imply:
+    build: /Users/sohan/Documents/GitHub/metacx-notes/Imply-Kafka-local/Imply-Docker-File/ .
+    networks:
+      kafka:
+        aliases:
+          - imply
+    image: imply-local:latest
+    ports:
+      - "9095:9095"
+      - "8090:8090"
+      - "8888:8888"
+      - "8082:8082"
+      - "8083:8083"
+      - "8091:8091"
+  zookeeper:
+    networks:
+      kafka:
+        aliases:
+          - zookeeper
+    image: docker.io/bitnami/zookeeper:3.7
+    ports:
+      - "2181:2181"
+    volumes:
+      - "zookeeper_data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    networks:
+      kafka:
+        aliases:
+          - kafka
+    image: docker.io/bitnami/kafka:2
+    ports:
+      - 9092:9092
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENERS=LISTENER_INTERNAL://kafka:19092,LISTENER_PUBLIC://kafka:9092
+      - KAFKA_ADVERTISED_LISTENERS=LISTENER_INTERNAL://kafka:19092,LISTENER_PUBLIC://kafka:9092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=LISTENER_INTERNAL:PLAINTEXT,LISTENER_PUBLIC:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=LISTENER_INTERNAL
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
+networks:
+  kafka: {}
