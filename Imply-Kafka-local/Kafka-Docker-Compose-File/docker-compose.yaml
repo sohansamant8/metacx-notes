@@ -6,12 +6,15 @@ version: "3"
 
 services:
   imply:
-    build: /Users/sohan/Documents/GitHub/metacx-notes/Imply-Kafka-local/Imply-Docker-File/ .
+    build: 
+      context: ./Imply-Docker-File
+      dockerfile: ./Imply-Docker-File/Dockerfile
     networks:
       kafka:
         aliases:
           - imply
     image: imply-local:latest
+    container_name: sohan-imply-local
     ports:
       - "9095:9095"
       - "8090:8090"
@@ -19,12 +22,15 @@ services:
       - "8082:8082"
       - "8083:8083"
       - "8091:8091"
+    depends_on:
+      - zookeeper
   zookeeper:
     networks:
       kafka:
         aliases:
           - zookeeper
     image: docker.io/bitnami/zookeeper:3.7
+    container_name: sohan-zookeeper-local
     ports:
       - "2181:2181"
     volumes:
@@ -37,6 +43,7 @@ services:
         aliases:
           - kafka
     image: docker.io/bitnami/kafka:2
+    container_name: sohan-kafka-local
     ports:
       - 9092:9092
     volumes:
